@@ -2,6 +2,7 @@
 import mysql.connector
 from mysql.connector import Error
 from database.connection import get_connection, close_connection 
+from database.create_triggers import create_triggers
 
 
 def create_database_if_not_exists():
@@ -22,6 +23,7 @@ def create_database_if_not_exists():
                 print("Banco de dados 'clinica_medica' criado com sucesso.")
 
                 create_tables()
+                create_triggers()
                 populate_tables()
                 
             cursor.close()
@@ -251,7 +253,7 @@ def populate_tables():
                 (23456, 2, 2, '2024-01-15', '09:00:00', '09:30:00', 1, 120.00, 'Cartão'),
                 (34567, 3, 3, '2024-01-20', '10:00:00', '10:30:00', 0, 0.00, 'N/A'),
                 (00001, 1, 6, '2024-03-01', '08:00:00', '09:00:00', 1, 100.00, 'Dinheiro'),
-                (00001, 4, 6, '2024-05-10', '10:00:00', '11:00:00', 1, 550.00, 'Dinheiro');
+                (00001, 4, 6, '2024-05-10', '14:00:00', '15:00:00', 1, 550.00, 'Dinheiro');
                 """,
                 
                 """
